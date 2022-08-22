@@ -91,9 +91,9 @@ button.addEventListener("click", () => {
     }
     else {
         displayMessage(username, input.value)
-        input.value= ""
         chatbox.scrollTop = chatbox.scrollHeight
         socket.emit("chat_message", input.value)
+        input.value= ""
  
     }
 })
