@@ -52,7 +52,7 @@ const chatbox = document.querySelector("#chatbox");
 const audio = new Audio("ring.mp3")
  
 // connecting to the server
-const socket = io("http://localhost:3000" || 'https://socketio-chito-app.herokuapp.com/')
+const socket = io('https://socketio-chito-app.herokuapp.com')
  
 // asking user for the username
 let username = prompt("username")
