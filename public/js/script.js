@@ -111,7 +111,7 @@ function enterKeyPressed(event) {
      
         }
     } else {
-       alert("Wrong Key Pressed")
+       
     }
  } 
  
