@@ -49,10 +49,11 @@
 //   chatbox.appendChild(div);
 // }
 const chatbox = document.querySelector(".chatbox");
+const chatarea = document.querySelector(".chat-area");
 const audio = new Audio("ring.mp3")
  
 // connecting to the server
-const socket = io('https://chito-chat-app.herokuapp.com')
+const socket = io('')
  
 // asking user for the username
 let username = prompt("username")
@@ -70,17 +71,19 @@ socket.on("nousername", () => {
 socket.on("joined_user", data => {
     displayMessage("ChitoBot", `${data} joined the chat`)
     chatbox.scrollTop = chatbox.scrollHeight
+    chatarea.scrollTop = chatbox.scrollHeight
 })
 socket.on("chat", data => {
     audio.play()
     displayMessage(data.username, data.msg)
     chatbox.scrollTop = chatbox.scrollHeight
- 
+    chatarea.scrollTop = chatbox.scrollHeight
 })
 socket.on("left", (data) => {
     displayMessage("ChitoBot", data.msg)
 })
 // selecting elements
+ const sound = document.querySelector(".add")
  
 const input = document.querySelector("input");
 const button = document.querySelector("button");
@@ -92,6 +95,7 @@ button.addEventListener("click", () => {
     else {
         displayMessage(username, input.value)
         chatbox.scrollTop = chatbox.scrollHeight
+        chatarea.scrollTop = chatbox.scrollHeight
         socket.emit("chat_message", input.value)
         input.value= ""
  
@@ -106,6 +110,7 @@ function enterKeyPressed(event) {
         else {
             displayMessage(username, input.value)
             chatbox.scrollTop = chatbox.scrollHeight
+            chatarea.scrollTop = chatbox.scrollHeight
             socket.emit("chat_message", input.value)
             input.value= ""
      
